@@ -28,6 +28,9 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  markdown: {
+    shikiConfig: { theme: "github-light", dark: "github-dark" },
+  },
   integrations: [
     mdx(),
     sitemap(),
