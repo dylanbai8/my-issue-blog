@@ -6,6 +6,7 @@ export default defineAstroPaperConfig({
     title: "My Issue Blog",
     description: "",
     author: "Dylan",
+    authorAvatar: "/avatar.jpg",
     authorBio: "用 GitHub Issues 记录思考与沉淀",
     profile: "https://github.com/dylanbai8/my-issue-blog/issues",
     lang: "zh-CN",
