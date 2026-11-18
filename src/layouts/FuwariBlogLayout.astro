@@ -38,6 +38,13 @@ const {
   <Header />
 
   <!-- 顶部沉浸式大横幅 Hero (负 margin 衔接 Header) -->
+  {showBanner && (
+    <FuwariBanner
+      title={bannerTitle || config.site.title}
+      subtitle={bannerSubtitle || config.site.description}
+      bannerImage={bannerImage}
+    />
+  )}
 
   <!-- 严格按照 Fuwari 标准页面宽度 75rem (1200px) 约束，左侧固定 17.5rem，紧凑精致 -->
   <div class="max-w-[75rem] mx-auto px-4 sm:px-6 w-full pb-16 pt-4">
