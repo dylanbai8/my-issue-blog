@@ -27,8 +27,8 @@ const totalEntries = months.reduce((sum, m) => sum + m.entryCount, 0);
 ---
 
 <FuwariBlogLayout
-  title={`每日分享 | ${config.site.title}`}
-  description={`按月归档的每日分享，共 ${months.length} 个月、${totalEntries} 条。`}
+  title={`日记 | ${config.site.title}`}
+  description={`按月归档的日记，共 ${months.length} 个月、${totalEntries} 条。`}
   postsCount={sortedPosts.length}
   years={years}
   tags={tags}
@@ -39,14 +39,14 @@ const totalEntries = months.reduce((sum, m) => sum + m.entryCount, 0);
     <div class="flex items-center justify-between pb-4 border-b border-border/60">
       <div class="flex items-center gap-2 font-bold text-base sm:text-lg text-foreground">
         <span class="w-1.5 h-4 rounded-full bg-accent"></span>
-        <span>每日分享</span>
+        <span>个人日记</span>
       </div>
       <span class="text-xs text-muted-foreground font-mono">
         {months.length} 个月 · {totalEntries} 条
       </span>
     </div>
     <p class="text-xs sm:text-sm text-muted-foreground mt-4 leading-relaxed">
-      一天两三条，随手记下用得上的工具、站点和零碎想法，按月归档成一页。
+      日记是最忠实的朋友，它不会欺骗你。
     </p>
   </div>
 

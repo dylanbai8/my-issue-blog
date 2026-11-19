@@ -16,7 +16,7 @@ const blog = defineCollection({
   }),
 });
 
-// 每日分享：一个月一个文件，扁平目录避免文件 id 变成带斜杠的路由。
+// 日记：一个月一个文件，扁平目录避免文件 id 变成带斜杠的路由。
 const daily = defineCollection({
   loader: glob({ pattern: "*.md", base: "./src/content/daily" }),
   schema: z.object({
