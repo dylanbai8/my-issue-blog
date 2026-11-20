@@ -1,3 +1,4 @@
+
 ---
 import { getCollection } from "astro:content";
 import FuwariBlogLayout from "@/layouts/FuwariBlogLayout.astro";
@@ -37,15 +38,17 @@ const { month, newerMonth, olderMonth } = Astro.props;
 const sortedPosts = await getPosts();
 const tags = getTagsWithCount(sortedPosts);
 const yearsMap = new Map<string, number>();
+
 sortedPosts.forEach(post => {
   const year = String(post.data.pubDate.getFullYear());
   yearsMap.set(year, (yearsMap.get(year) || 0) + 1);
 });
+
 const years = Array.from(yearsMap, ([year, count]) => ({ year, count })).sort(
   (a, b) => Number(b.year) - Number(a.year)
 );
 
-const description = `共 ${month.days.length} 天、${month.entryCount} 条链接分享。`;
+const description = `共 ${month.days.length} 天、${month.entryCount} 条日记记录。`;
 ---
 
 <FuwariBlogLayout
@@ -63,6 +66,7 @@ const description = `共 ${month.days.length} 天、${month.entryCount} 条链�
         <span class="w-1.5 h-4 rounded-full bg-accent"></span>
         <span>{month.label}</span>
       </div>
+
       <span class="text-xs text-muted-foreground font-mono">
         {month.days.length} 天 · {month.entryCount} 条
       </span>
@@ -77,7 +81,9 @@ const description = `共 ${month.days.length} 天、${month.entryCount} 条链�
             title={`${day.dayLabel} ${day.weekday}`}
           >
             {day.dayLabel}
-            <span class="ml-1 text-[10px] opacity-60">{day.entries.length}</span>
+            <span class="ml-1 text-[10px] opacity-60">
+              {day.entries.length}
+            </span>
           </a>
         ))
       }
@@ -97,6 +103,7 @@ const description = `共 ${month.days.length} 天、${month.entryCount} 条链�
               <span class="w-1.5 h-4 rounded-full bg-accent" />
               {day.dayLabel}
             </h2>
+
             <span class="text-[11px] text-muted-foreground font-mono">
               {day.weekday} · {day.entries.length} 条
             </span>
@@ -106,21 +113,9 @@ const description = `共 ${month.days.length} 天、${month.entryCount} 条链�
             {day.entries.map(entry => (
               <li class="flex gap-2.5 text-sm leading-relaxed">
                 <span class="mt-2 w-1 h-1 rounded-full bg-border shrink-0" />
-                <div class="min-w-0">
-                  <a
-                    href={entry.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="font-semibold text-foreground hover:text-accent transition-colors break-words"
-                  >
-                    {entry.name}
-                  </a>
-                  {entry.desc && (
-                    <span class="text-muted-foreground">
-                      {" — "}
-                      <span set:html={renderInline(entry.desc)} />
-                    </span>
-                  )}
+
+                <div class="min-w-0 text-muted-foreground break-words">
+                  <span set:html={renderInline(entry.desc)} />
                 </div>
               </li>
             ))}
@@ -144,6 +139,7 @@ const description = `共 ${month.days.length} 天、${month.entryCount} 条链�
         <span />
       )
     }
+
     {
       newerMonth && (
         <a
